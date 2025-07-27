@@ -1,0 +1,31 @@
+import tkinter as tk 
+import pyttsx3
+
+# Creating the speech engine
+engine = pyttsx3.init()      # init() Initializes the engine
+engine.setProperty('rate' , 150)
+
+def speak(text):
+    engine.say(text)      # Queues the text
+    engine.runAndWait()  # the bracket is empty because it just runs the speech engine, not taking any new input
+
+# this will generate the voice by clicking on the speak button
+def on_click():
+    speak("Hello Paul , I AM JARVIS!, Your Personal AI assistant.")
+
+# It will create the main window [GUI]
+root = tk.Tk() # root is just the name given to the main window 
+root.title("JARVIS Assistant")
+root.geometry("400x300")
+
+# TITLE Label
+label = tk.Label(root, text="Welcome to JARVIS", font=("Helvetica",16 ))
+label.pack(pady=20) # this is for spacing
+
+# This is the Speak buttton , which was mentioned from line 12 to 14 
+speak_button = tk.Button(root, text = "Speak", command= on_click, font=("Arial", 14), bg="blue", fg = "white")
+speak_button.pack(pady=20) # bg - Background color   
+                           # fg - Foreground color (text color)       
+# Run the GUI app
+root.mainloop()                           
+
